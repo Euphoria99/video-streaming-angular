@@ -1,0 +1,53 @@
+<form #uploadForm="ngForm" (ngSubmit)="onUpload(uploadForm)" novalidate class="upload-form">
+  <div class="file-section">
+    <label class="custom-file-upload">
+      <input type="file" class="file-input" (change)="onChange($event)" #fileUpload required />
+      Choose File
+    </label>
+
+    <div *ngIf="file" class="file-info">
+      <section class="preview">
+        <ng-container *ngIf="isImage(file)">
+          <img [src]="fileUrl" alt="File Preview" class="file-preview image-preview" />
+        </ng-container>
+        <ng-container *ngIf="isVideo(file)">
+          <video [src]="fileUrl" class="file-preview video-preview" controls></video>
+        </ng-container>
+        <ng-container *ngIf="!isImage(file) && !isVideo(file)">
+          <i class="file-icon">📁</i>
+        </ng-container>
+      </section>
+
+      <section class="file-details">
+        <h4>File details:</h4>
+        <ul>
+          <li><strong>Name:</strong> {{file.name}}</li>
+          <li><strong>Type:</strong> {{file.type}}</li>
+          <li><strong>Size:</strong> {{file.size}} bytes</li>
+        </ul>
+        <button type="button" class="remove-button" (click)="removeFile()">Remove File</button>
+      </section>
+    </div>
+
+    <div class="input-section">
+      <label for="title">Title:</label>
+      <input type="text" id="title" name="title" [(ngModel)]="title" required />
+      <div *ngIf="uploadForm.submitted && !title" class="error">Title is required.</div>
+    </div>
+
+    <div class="input-section">
+      <label for="description">Description:</label>
+      <textarea id="description" name="description" [(ngModel)]="description" required></textarea>
+      <div *ngIf="uploadForm.submitted && !description" class="error">Description is required.</div>
+    </div>
+
+    <button type="submit" class="upload-button">Upload the file</button>
+
+    <section [ngSwitch]="status" class="status-message">
+      <p *ngSwitchCase="'uploading'">⏳ Uploading...</p>
+      <p *ngSwitchCase="'success'">✅ Done!</p>
+      <p *ngSwitchCase="'fail'">❌ Error!</p>
+      <p *ngSwitchDefault>😶 Waiting to upload...</p>
+    </section>
+  </div>
+</form>
