@@ -17,6 +17,14 @@
 
   <!-- Resources -->
   <div class="file-uploaders">
+    <div *ngIf="videoId !== '' && videoId !== null" >
+      <h2>Video Player</h2>
+      <video height="720" width="1280" controls>
+        <source [src]="videoUrl" type="video/mp4">
+        Your browser does not support the video tag.
+      </video>
+    </div>
+    
     <app-single-file-upload></app-single-file-upload>
   </div>
 
