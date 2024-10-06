@@ -8,11 +8,13 @@ import { AppComponent } from './app.component';
 import { SingleFileUploadComponent } from './single-file-upload/single-file-upload.component';
 import { HttpClientModule } from '@angular/common/http';
 import { FormsModule } from '@angular/forms';
+import { VideoPlayerComponent } from './video-player/video-player.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    SingleFileUploadComponent
+    SingleFileUploadComponent,
+    VideoPlayerComponent
   ],
   imports: [
     BrowserModule,

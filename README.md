@@ -25,3 +25,16 @@ Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To u
 ## Further help
 
 To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
+
+
+        String output360p = HLS_DIR+videoId+"/360p/";
+        String output480p = HLS_DIR+videoId+"/480p/";
+        String output720p = HLS_DIR+videoId+"/720p/";
+        String output1080p = HLS_DIR+videoId+"/1080p/";
+
+
+
+        Files.createDirectories(Paths.get(output360p));
+        Files.createDirectories(Paths.get(output480p));
+        Files.createDirectories(Paths.get(output720p));
+        Files.createDirectories(Paths.get(output1080p));

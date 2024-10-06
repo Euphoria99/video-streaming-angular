@@ -50,7 +50,7 @@ export class SingleFileUploadComponent {
       formData.append("title", this.title);
       formData.append("description", this.description);
 
-      const upload$ = this.http.post(`${this.apiUrl}/videos`, formData);
+      const upload$ = this.http.post(`${this.apiUrl}/videos/upload`, formData);
       this.status = "uploading";
 
       upload$.subscribe({
